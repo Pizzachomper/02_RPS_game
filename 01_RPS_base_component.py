@@ -49,7 +49,7 @@ def choice_checker(question, valid_list, error):
 #lists for testing purposes
 rps_list = ["rock", "paper", "scissors", "xxx"]
 
-#Ask user for # of rounds
+#Ask user for # of rounds, then loop
 
 rounds_played = 0
 
@@ -78,17 +78,30 @@ while end_game == "no":
     choose = choice_checker(choose_instruction, rps_list, choose_error)
 
     #get computer choice
-
+    comp_choice = random.choice(rps_list[:-1])
+    
+    #print comp choice and user choice
+    print(f"You choose {choose}")
+    print("Comp_choice: ", comp_choice)
     
     #compare choice
 
+    if choose == comp_choice:
+        print(f"Its a Tie! both players choose {choose}")
+    elif choose == "rock" and comp_choice == "scissors":
+        print("You win! Rock uses mighty bolder and smashed scissors.")
+    elif choose == "paper" and comp_choice == "rock":
+        print("You win! Paper uses blistering paper cut and injures rock.")
+    elif choose == "scissors" and comp_choice == "paper":
+        print("You win! Scissor used ninja slice and cut paper.")
+    else:
+        print(f"You lose! Grandmaster uses {comp_choice} and summons ultimate trio and wipes {choose} out of the earth.")
 
     #End game if exit code is typed
     if choose == "xxx":
         break
 
     #Rest of loop / game
-    print(f"You choose {choose}")
 
     rounds_played += 1
     #end_game if requested number of rounds have been played
